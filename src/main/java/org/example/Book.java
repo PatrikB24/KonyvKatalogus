@@ -46,6 +46,11 @@ public class Book extends Item implements Comparable<Book>, Serializable {
     }
 
     @Override
+    public String toString() {
+        return getItemInfo();
+    }
+
+    @Override
     public String getItemInfo() {
         return super.getItemInfo() + ", Szerzők: " + authors + ", Kiadási év: " + publicationYear + ", Ár: " + price + " HUF";
     }

@@ -19,7 +19,7 @@ public class BookCatalog {
 
     public void removeBook(int id) {
         books.removeIf(book -> book.getId() == id);
-        bookMap.values().forEach(bookList -> bookList.removeIf(book -> book.getId() == id));
+        bookMap.entrySet().removeIf(entry -> entry.getValue().removeIf(book -> book.getId() == id));
     }
 
     public List<Book> searchBooks(String keyword) {
@@ -28,5 +28,9 @@ public class BookCatalog {
 
     public void listBooks() {
         books.forEach(book -> System.out.println(book.getItemInfo()));
+    }
+
+    public List<Book> getBooks() {
+        return books;
     }
 }
