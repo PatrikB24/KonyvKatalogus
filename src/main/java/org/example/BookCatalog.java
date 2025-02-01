@@ -33,4 +33,18 @@ public class BookCatalog {
     public List<Book> getBooks() {
         return books;
     }
+
+
+    public void saveAllBooksToDatabase() {
+        for (Book book : books) {
+            DatabaseHelper.saveBook(book);
+        }
+    }
+
+    public void loadBooksFromDatabase() {
+        books.clear();
+        books.addAll(DatabaseHelper.loadBooks());
+    }
+
+
 }

@@ -9,6 +9,17 @@ public class Main {
     private static final BookCatalog catalog = new BookCatalog();
 
     public static void main(String[] args) {
+        // Könyvek betöltése az adatbázisból
+        catalog.loadBooksFromDatabase();
+
+        // Példa: Új könyv hozzáadása és mentése az adatbázisba
+        Book newBook = new Book("MySQL Programming", Set.of("John Smith"), 2023, 7990);
+        catalog.addBook(newBook);
+        catalog.saveAllBooksToDatabase();
+
+        // Kiíratás az adatbázisból
+        System.out.println("Betöltött könyvek: " + catalog.getBooks());
+
         while (true) {
             System.out.println("\nFőmenü:");
             System.out.println("1. Könyv hozzáadása");

@@ -3,7 +3,6 @@ package org.example;
 import java.io.Serializable;
 import java.util.Set;
 
-
 public class Book extends Item implements Comparable<Book>, Serializable {
     private Set<String> authors;
     private int publicationYear;
