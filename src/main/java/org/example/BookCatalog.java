@@ -7,19 +7,22 @@ public class BookCatalog {
     private Map<String, List<Book>> bookMap;
 
     public BookCatalog() {
-        this.books = new ArrayList<>();
+        this.books = FileHandler.loadBooksFromBinaryFile();
         this.bookMap = new HashMap<>();
+        rebuildBookMap();
     }
 
     public void addBook(Book book) {
         books.add(book);
         book.getAuthors().forEach(author ->
                 bookMap.computeIfAbsent(author.toLowerCase(), k -> new ArrayList<>()).add(book));
+        saveToFile();
     }
 
     public void removeBook(int id) {
         books.removeIf(book -> book.getId() == id);
         bookMap.entrySet().removeIf(entry -> entry.getValue().removeIf(book -> book.getId() == id));
+        saveToFile();
     }
 
     public List<Book> searchBooks(String keyword) {
@@ -35,16 +38,16 @@ public class BookCatalog {
     }
 
 
-    public void saveAllBooksToDatabase() {
+    private void rebuildBookMap() {
         for (Book book : books) {
-            DatabaseHelper.saveBook(book);
+            book.getAuthors().forEach(author ->
+                    bookMap.computeIfAbsent(author.toLowerCase(), k -> new ArrayList<>()).add(book));
         }
     }
 
-    public void loadBooksFromDatabase() {
-        books.clear();
-        books.addAll(DatabaseHelper.loadBooks());
+
+    private void saveToFile() {
+        FileHandler.saveBooksToTextFile(books);
+        FileHandler.saveBooksToBinaryFile(books);
     }
-
-
 }
