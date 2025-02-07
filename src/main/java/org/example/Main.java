@@ -1,7 +1,10 @@
 package org.example;
 
 import java.util.*;
-
+/**
+ * A Main osztály a program lehetővé teszi
+ * a felhasználónak a könyvkatalógus kezelését.
+ */
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static final BookCatalog catalog = new BookCatalog();

@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * A DatabaseHelper osztály felelős az adatbáziskapcsolat kezeléséért.
+ */
 public class DatabaseHelper {
     private static final String URL = "jdbc:mysql://localhost:3306/konyvkatalogus";
     private static final String USER = "root";

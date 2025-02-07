@@ -4,7 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
+/**
+ * A FileHandler osztály felelős a könyvek fájlkezeléséért.
+ * A könyveket képes menteni és betölteni szöveges illetve bináris fájlformátumban.
+ */
 public class FileHandler {
 
     private static final String TEXT_FILE = "books.txt";
