@@ -49,4 +49,17 @@ class BookCatalogTest {
     void testListBooks() {
         assertEquals(2, catalog.getBooks().size());
     }
-}}
+
+    @Test
+    void testEmptyCatalog() {
+        catalog = new BookCatalog();
+        assertTrue(catalog.getBooks().isEmpty());
+    }
+
+    @Test
+    void testDuplicateBooks() {
+        Book duplicate = new Book("Java kezdőknek", Set.of("Szerző1"), 2021, 5500);
+        catalog.addBook(duplicate);
+        assertEquals(3, catalog.getBooks().size());
+    }
+}

@@ -32,4 +32,11 @@ class BookTest {
 
         assertEquals(expectedInfo, book.getItemInfo());
     }
+
+    @Test
+    void testBookIdUniqueness() {
+        Book book1 = new Book("Könyv 1", Set.of("Író1"), 2020, 5000);
+        Book book2 = new Book("Könyv 2", Set.of("Író2"), 2021, 6000);
+        assertNotEquals(book1.getId(), book2.getId());
+    }
 }
